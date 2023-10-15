@@ -1,30 +1,24 @@
 import React, { useState } from "react";
 import UsersList from "./Components/UsersList";
+import AddUser from "./Components/AddUser";
 
 const App = () => {
-	const data = [
-		{
-			id: 1,
-			fullName: "brahim aayache",
-			city: "tan-tan",
-		},
-		{
-			id: 2,
-			fullName: "hassan aayache",
-			city: "tan-tan",
-		},
-		{
-			id: 3,
-			fullName: "ayoub aarnouz",
-			city: "agadir",
-		},
-	];
+	
 
-	const [users, setUsers] = useState(data);
+	const [users, setUsers] = useState([]);
+	const [lastId, setLastId] = useState(0);
 
-	return (
+  const addUser=({payload})=>{
+    console.table(payload);
+    setUsers(prev=>[...prev,payload])
+  }
+
+ 
+
+	return (  
 		<>
 			<div className='container'>
+				<AddUser lastId={lastId+1} addUser={addUser} />
 				<UsersList users={users} />
 			</div>
 		</>
