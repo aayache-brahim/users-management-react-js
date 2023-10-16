@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import{usersContext} from "../App"
 
-const UsersList = ({ users }) => {
+const UsersList = () => {
+
+	const context = useContext(usersContext)
+
 	return (
+
+
 		<>
 			<div className='table-responsive'>
 				<table className='table table-default my-3 '>
@@ -13,7 +19,7 @@ const UsersList = ({ users }) => {
 						</tr>
 					</thead>
 					<tbody className=''>
-						{users && users.map(user=>(
+						{context.users && context.users.map(user=>(
                         <tr className='table-default' key={user.id}>
 							<td>{user.id}</td>
 							<td>{user.fullName}</td>

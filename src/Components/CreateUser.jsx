@@ -1,19 +1,21 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { usersContext } from "../App";
 
-const AddUser = ({ lastId, addUser }) => {
+const CreateUser = () => {
 
     
     const fullName = useRef() 
     const city = useRef() 
+    const context = useContext(usersContext)
 
   
          const handleSubmit=(e)=>{
             e.preventDefault()
-             addUser({
+            context.addUser({
                     payload:{
                         fullName : fullName.current.value,
                         city     :city.current.value,
-                        id :lastId++}
+                        id :context.lastId++}
                 })
 
                 fullName.current.value = ""
@@ -29,7 +31,7 @@ const AddUser = ({ lastId, addUser }) => {
 					<label for='' class='form-label'>
 						ID
 					</label>
-					<input type='text' readOnly value={lastId} class='form-control' />
+					<input type='text' readOnly value={context.lastId} class='form-control' />
 					<label for='' class='form-label'>
 						Full Name 
 					</label>
@@ -52,4 +54,4 @@ const AddUser = ({ lastId, addUser }) => {
 	);
 };
 
-export default AddUser;
+export default CreateUser;

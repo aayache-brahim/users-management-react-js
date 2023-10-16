@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import UsersList from "./Components/UsersList";
-import AddUser from "./Components/AddUser";
+import React, { createContext, useState } from "react";
+import UsersLayout from "./Components/UsersLayout";
 
+export const usersContext = createContext({
+	users : [],
+	lastId : 0,
+	addUser:()=> null
+}) 
 const App = () => {
 	
 
@@ -19,8 +23,15 @@ const App = () => {
 	return (  
 		<>
 			<div className='container'>
-				<AddUser lastId={lastId+1} addUser={addUser} />
-				<UsersList users={users} />
+			<usersContext.Provider value={
+				{
+					users:users,
+					lastId:lastId,
+					addUser:addUser
+				}
+			}>
+			<UsersLayout/>
+			</usersContext.Provider>
 			</div>
 		</>
 	);
