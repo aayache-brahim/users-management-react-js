@@ -11,6 +11,7 @@ const App = () => {
   const addUser=({payload})=>{
     console.table(payload);
     setUsers(prev=>[...prev,payload])
+    setLastId(prev=>prev+1)
   }
 
  

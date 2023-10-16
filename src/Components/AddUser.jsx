@@ -12,8 +12,12 @@ const AddUser = ({ lastId, addUser }) => {
              addUser({
                     payload:{
                         fullName : fullName.current.value,
-                        city     :city.current.value}
+                        city     :city.current.value,
+                        id :lastId++}
                 })
+
+                fullName.current.value = ""
+                city.current.value =" "
         
     } 
 
