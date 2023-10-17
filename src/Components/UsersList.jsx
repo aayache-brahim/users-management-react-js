@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import{usersContext} from "../App"
+import { Link } from "react-router-dom";
 
 const UsersList = () => {
 
@@ -15,7 +16,8 @@ const UsersList = () => {
 						<tr>
 							<th># ID</th>
 							<th>Full Name</th>
-							<th>City </th>
+							<th>City</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody className=''>
@@ -24,6 +26,10 @@ const UsersList = () => {
 							<td>{user.id}</td>
 							<td>{user.fullName}</td>
 							<td>{user.city}</td>
+							<td className="">
+								<Link to={`user/${user.id}/edit`} className="btn btn-outline-primary me-3">Edit</Link>
+								<Link to={`user/${user.id}/edit`} className="btn btn-outline-danger">Delete</Link>
+							</td>
 						</tr>
                         ))}
 					</tbody>

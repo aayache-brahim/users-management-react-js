@@ -1,23 +1,24 @@
 import { BrowserRouter ,Link, Outlet, Route ,Routes } from "react-router-dom"
 import UsersList from "./UsersList"
 import CreateUser from "./CreateUser"
+import EditUser from "./EditUser"
 
 const UsersLayout = () => {
   return (
     <>
     <BrowserRouter>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-              <div class="container">
-                <a class="navbar-brand" href="#">Users Management </a>
-                <div class="collapse navbar-collapse  " id="collapsibleNavId">
-                    <ul class="navbar-nav me-auto mt-2 mt-lg-0 flex-row  ">
-                        <li class="nav-item">
+        <nav className="navbar navbar-expand-sm navbar-light bg-light my-4">
+              <div className="container">
+                <a className="navbar-brand" href="#">Users Management </a>
+                <div className="collapse navbar-collapse  " id="collapsibleNavId">
+                    <ul className="navbar-nav me-auto mt-2 mt-lg-0 flex-row  ">
+                        <li className="nav-item">
                             <Link className="nav-link active" to={'/'}>Users</Link>                     
                         </li>
-                        <li class="nav-item">
+                        <li className="nav-item">
                         <Link className="nav-link active" to={'/user/create'} >create User </Link>                   
                         </li>
-                        <li class="nav-item dropdown">
+                        <li className="nav-item dropdown">
                         {/* <Link className="nav-link active" to={'/users'} />                       */}
                             
                         </li>
@@ -31,6 +32,7 @@ const UsersLayout = () => {
     <Routes>
         <Route path="/" element={<UsersList/>} />
         <Route path="user/create" element={<CreateUser/>} />
+        <Route path="user/:id/edit" element={<EditUser/>} />
     </Routes>
     </BrowserRouter>
 
