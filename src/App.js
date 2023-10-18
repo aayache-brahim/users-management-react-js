@@ -6,6 +6,7 @@ export const usersContext = createContext({
 	lastId: 0,
 	addUser: () => null,
 	edituser:()=>null,
+	deleteUser:()=>null
 });
 const App = () => {
 	const [users, setUsers] = useState([]);
@@ -15,6 +16,7 @@ const App = () => {
 		console.table(payload);
 		setUsers((prev) => [...prev, payload]);
 		setLastId((prev) => prev + 1);
+		window.history.back()
 	};
 
 	const editUser = ({payload}) => {
@@ -25,6 +27,11 @@ const App = () => {
 		window.history.back()
 	};
 
+	const deleteUser = ({payload})=>{
+		const {id} = payload
+		setUsers(prev=>prev.filter(user=>user.id !== id   ))
+	}
+
 	return (
 		<>
 			<div className='container'>
@@ -33,7 +40,8 @@ const App = () => {
 						users: users,
 						lastId: lastId,
 						addUser: addUser,
-						edituser:editUser
+						edituser:editUser,
+						deleteUser:deleteUser
 					}}>
 					<UsersLayout />
 				</usersContext.Provider>

@@ -2,6 +2,7 @@ import { BrowserRouter ,Link, Outlet, Route ,Routes } from "react-router-dom"
 import UsersList from "./UsersList"
 import CreateUser from "./CreateUser"
 import EditUser from "./EditUser"
+import DeleteUser from "./DeleteUser"
 
 const UsersLayout = () => {
   return (
@@ -33,6 +34,7 @@ const UsersLayout = () => {
         <Route path="/" element={<UsersList/>} />
         <Route path="user/create" element={<CreateUser/>} />
         <Route path="user/:id/edit" element={<EditUser/>} />
+        <Route path="user/:id/delete" element={<DeleteUser/>} />
     </Routes>
     </BrowserRouter>
 

@@ -28,7 +28,7 @@ const UsersList = () => {
 							<td>{user.city}</td>
 							<td className="">
 								<Link to={`user/${user.id}/edit`} className="btn btn-outline-primary me-3">Edit</Link>
-								<Link to={`user/${user.id}/edit`} className="btn btn-outline-danger">Delete</Link>
+								<Link to={`user/${user.id}/delete`} className="btn btn-outline-danger">Delete</Link>
 							</td>
 						</tr>
                         ))}
