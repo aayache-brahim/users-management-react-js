@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 const EditUser = () => {
 	const params = useParams();
 	const [currentUser, setCurrentUser] = useState();
-	const fullName = useRef(null);
-	const city = useRef(null);
+	const fullName = useRef();
+	const city = useRef();
 	const context = useContext(usersContext);
 
 	const handleSubmit = (e) => {
@@ -15,17 +15,23 @@ const EditUser = () => {
 			payload: {
 				fullName: fullName.current.value,
 				city: city.current.value,
-				id: context.lastId++,
+				id:parseInt(params.id)
 			},
 		});
+
+		
 	};
 
-	useEffect(() => {
-		let { id } = params;
-		console.log(id)
-		const user = context.users.filter((user) => user.id === parseInt(id));
-		setCurrentUser(user)
-	}, []);
+	 useEffect(() => {
+        const {id} = params
+        const user = context.users.filter(user => user.id === parseInt(id))
+        if(user.length > 0){
+            setCurrentUser(...user)
+        }else {
+            console.error('User not found')
+        }
+		
+    }, []);
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
@@ -33,13 +39,18 @@ const EditUser = () => {
 					<label for='' className='form-label'>
 						ID
 					</label>
-					<input type='text' readOnly value={context.lastId} className='form-control' />
+					<input
+						type='text'
+						readOnly
+						defaultValue={currentUser?.id}
+						className='form-control'
+					/>
 					<label for='' className='form-label'>
 						Full Name
 					</label>
 					<input
 						ref={fullName}
-						defaultValue={fullName}
+						defaultValue={currentUser?.fullName}
 						type='text'
 						className='form-control'
 					/>
@@ -49,16 +60,17 @@ const EditUser = () => {
 						</label>
 						<select
 							ref={city}
-							defaultValue={city}
+							key={currentUser?.city}
+							defaultValue={currentUser?.city}
 							className='form-select form-select-lg'>
 							<option>Select one</option>
-							<option value='Ta'>Tan Tan </option>
-							<option value='La'>Laayoune</option>
-							<option value='Ag'>Agadir</option>
+							<option value='Tan-Tan'>Tan Tan </option>
+							<option value='Laayoune'>Laayoune</option>
+							<option value='Agadir'>Agadir</option>
 						</select>
 					</div>
 					<button type='submit' className='btn btn-primary w-100'>
-						Add User
+						Edit User
 					</button>
 				</div>
 			</form>

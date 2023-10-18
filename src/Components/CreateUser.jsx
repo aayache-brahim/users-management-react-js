@@ -38,9 +38,9 @@ const CreateUser = () => {
 						</label>
 						<select ref={city} class='form-select form-select-lg'>
 							<option>Select one</option>
-							<option value='Ta'>Tan Tan </option>
-							<option value='La'>Laayoune</option>
-							<option value='Ag'>Agadir</option>
+							<option value='Tan Tan'>Tan Tan</option>
+							<option value='Laayoune'>Laayoune</option>
+							<option value='Agadir'>Agadir</option>
 						</select>
 					</div>
 					<button type='submit' className='btn btn-primary w-100'>

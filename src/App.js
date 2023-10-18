@@ -18,7 +18,11 @@ const App = () => {
 	};
 
 	const editUser = ({payload}) => {
-			
+		console.table(payload)
+		const {id,...rest} = payload
+		console.log(id , rest)
+		setUsers(prevState=>prevState.map(user=>{ if(user.id === id) { return {id :user.id ,...rest} } return user}))
+		window.history.back()
 	};
 
 	return (
