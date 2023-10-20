@@ -16,6 +16,7 @@ const UsersList = () => {
 						<tr>
 							<th># ID</th>
 							<th>Full Name</th>
+							<th>Age</th>
 							<th>City</th>
 							<th>Actions</th>
 						</tr>
@@ -25,6 +26,7 @@ const UsersList = () => {
                         <tr className='table-default' key={user.id}>
 							<td>{user.id}</td>
 							<td>{user.fullName}</td>
+							<td>{user.age}</td>
 							<td>{user.city}</td>
 							<td className="">
 								<Link to={`user/${user.id}/edit`} className="btn btn-outline-primary me-3">Edit</Link>

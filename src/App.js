@@ -25,6 +25,7 @@ const App = () => {
 		console.log(id , rest)
 		setUsers(prevState=>prevState.map(user=>{ if(user.id === id) { return {id :user.id ,...rest} } return user}))
 		window.history.back()
+		// console.log(user)
 	};
 
 	const deleteUser = ({payload})=>{

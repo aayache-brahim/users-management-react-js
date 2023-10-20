@@ -4,20 +4,26 @@ import { usersContext } from "../App";
 const CreateUser = () => {
 	const fullName = useRef();
 	const city = useRef();
+	const age = useRef()
+	const gender = useRef()
 	const context = useContext(usersContext);
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		context.addUser({
 			payload: {
 				fullName: fullName.current.value,
 				city: city.current.value,
+				age: age.current.value,
+				gender: gender.current.value,
 				id: context.lastId + 1,
 			},
 		});
+		// console.log({payload})
 
 		fullName.current.value = "";
 		city.current.value = " ";
+		age.current.value = " ";
 	};
 
 	return (
@@ -32,6 +38,18 @@ const CreateUser = () => {
 						Full Name
 					</label>
 					<input ref={fullName} type='text' class='form-control' />
+					<label className="form-label">Age</label>
+					<input className="form-control " ref={age}/>
+					<div class='mb-3'>
+						<label for='' class='form-label'>
+						Gender
+						</label>
+						<select ref={gender} class='form-select form-select-lg'>
+							<option>Select Gender</option>
+							<option value='male'>Male</option>
+							<option value='female'>Memale</option>
+						</select>
+					</div>
 					<div class='mb-3'>
 						<label for='' class='form-label'>
 							City
