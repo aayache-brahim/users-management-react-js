@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 const UsersList = () => {
 
+	// using the users context
 	const context = useContext(usersContext)
 
 	return (
 
-
+		//displaying the users list 
 		<>
 			<div className='table-responsive'>
 				<table className='table table-default my-3 '>
@@ -17,6 +18,7 @@ const UsersList = () => {
 							<th># ID</th>
 							<th>Full Name</th>
 							<th>Age</th>
+							<th>Gender</th>
 							<th>City</th>
 							<th>Actions</th>
 						</tr>
@@ -27,6 +29,7 @@ const UsersList = () => {
 							<td>{user.id}</td>
 							<td>{user.fullName}</td>
 							<td>{user.age}</td>
+							<td>{user.gender}</td>
 							<td>{user.city}</td>
 							<td className="">
 								<Link to={`user/${user.id}/edit`} className="btn btn-outline-primary me-3">Edit</Link>
